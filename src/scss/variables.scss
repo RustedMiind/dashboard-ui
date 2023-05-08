@@ -1,0 +1,35 @@
+:root {
+  --active-text-color: #0038ff;
+  --item-background: rgb(156 163 175);
+  --button-apply: #fa7474;
+  --button-checkout: #5c51db;
+  --layer-form: #312424;
+  --form-font-bg: rgba(21, 19, 22, 0.86);
+  --font-color: rgb(100 116 139);
+}
+
+$activeText: var(--active-text-color);
+$itemBackground: var(--item-background);
+$buttonApply: var(--button-apply);
+$buttonCheckout: var(--button-checkout);
+$fontColor: var(--font-color);
+$layerForm: var(--layer-form);
+$signInButtonBG: linear-gradient(90.3deg, #9c3fe4 0.16%, #c65647 101.62%);
+$buttonApply: var(--button-apply);
+$buttonCheckout: var(--button-checkout);
+$layerForm: var(--layer-form);
+$signInButtonBG: linear-gradient(90.3deg, #420671 0.16%, #ce2913 101.62%);
+$inputColor: radial-gradient(
+  90.16% 143.01% at 15.32% 21.04%,
+  rgba(255, 255, 255, 0.2) 0%,
+  rgba(255, 255, 255, 0.0447917) 77.08%,
+  rgba(255, 255, 255, 0) 100%
+);
+$formBG: radial-gradient(
+  90.16% 143.01% at 15.32% 21.04%,
+  rgba(179, 121, 223, 0.2) 0%,
+  rgba(204, 88, 84, 0.016) 77.08%,
+  rgba(179, 121, 223, 0.2) 100%
+);
+$fontMain: "Inter", sans-serif;
+$fontLogo: "Italianno", cursive;

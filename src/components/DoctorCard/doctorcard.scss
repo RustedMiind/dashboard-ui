@@ -1,0 +1,67 @@
+@use "../../scss/variables.scss" as *;
+
+.doctor-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 10rem;
+  width: 50rem;
+  margin: 1rem;
+  color: $fontColor;
+  border-radius: 1rem;
+  padding: 1rem;
+  box-shadow: 0.5rem 0.5rem 0.4rem rgba(0, 0, 0, 0.3);
+  .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 100%;
+    max-width: 70%;
+  }
+  .manage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    max-width: 30%;
+    min-width: 15%;
+    button.approve {
+      color: black;
+      border: none;
+      outline: none;
+      background-color: rgb(74 222 128);
+      padding: 0.6rem;
+      border-radius: 0.5rem;
+      cursor: pointer;
+    }
+    button.delete {
+      color: unset;
+      border: none;
+      outline: none;
+      background-color: rgb(239 68 68);
+      color: white;
+      padding: 0.6rem;
+      border-radius: 0.5rem;
+      cursor: pointer;
+    }
+    button {
+      margin: 0 0.4rem;
+    }
+  }
+}
+
+@media (max-width: 968px) {
+  .ticket-card {
+    max-width: 90%;
+    align-items: start;
+    flex-direction: column;
+    .manage {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      max-width: 100%;
+      min-width: 100%;
+      height: fit-content;
+    }
+  }
+}

@@ -1,0 +1,76 @@
+:root {
+  --active-text-color: #0038ff;
+  --item-background: rgb(156 163 175);
+  --button-apply: #fa7474;
+  --button-checkout: #5c51db;
+  --layer-form: #312424;
+  --form-font-bg: rgba(21, 19, 22, 0.86);
+  --font-color: rgb(100 116 139);
+}
+
+.ticket-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 10rem;
+  width: 50rem;
+  margin: 1rem;
+  color: var(--font-color);
+  border-radius: 1rem;
+  padding: 1rem;
+  box-shadow: 0.5rem 0.5rem 0.4rem rgba(0, 0, 0, 0.3);
+}
+.ticket-card .content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 100%;
+  max-width: 70%;
+}
+.ticket-card .manage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  max-width: 30%;
+  min-width: 15%;
+}
+.ticket-card .manage button.approve {
+  color: unset;
+  border: none;
+  outline: none;
+  background-color: rgb(74, 222, 128);
+  padding: 0.6rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+.ticket-card .manage button.delete {
+  color: unset;
+  border: none;
+  outline: none;
+  background-color: rgb(239, 68, 68);
+  color: white;
+  padding: 0.6rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+.ticket-card .manage button {
+  margin: 0 0.4rem;
+}
+
+@media (max-width: 968px) {
+  .ticket-card {
+    max-width: 90%;
+    align-items: start;
+    flex-direction: column;
+  }
+  .ticket-card .manage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 100%;
+    min-width: 100%;
+    height: -moz-fit-content;
+    height: fit-content;
+  }
+}/*# sourceMappingURL=ticketcard.css.map */

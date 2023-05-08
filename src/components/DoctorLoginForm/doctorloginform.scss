@@ -1,0 +1,42 @@
+@use "../../scss/variables.scss" as *;
+
+.login-form {
+  width: 46rem;
+  padding: 2rem;
+  border-radius: 0.8rem;
+  color: $fontColor;
+  // background-color: $itemBackground;
+  border: 2px solid $fontColor;
+  &.red-border {
+    border: 4px solid red;
+  }
+  .error {
+    color: red;
+  }
+}
+.login-form form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  .input-section .input-container {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 0;
+    input {
+      margin-top: 1rem;
+      color: $fontColor;
+      border: 2px solid $fontColor;
+      border-radius: 0.4rem;
+      outline: none;
+      background-color: transparent;
+      font-size: 1rem;
+      padding: 0.6rem 1rem;
+    }
+  }
+}
+
+@media (max-width: 968px) {
+  .login-form {
+    width: 90vw;
+  }
+}
