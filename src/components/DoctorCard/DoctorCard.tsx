@@ -9,9 +9,14 @@ function DoctorCard(props: PropsType) {
   const dispatch = useDispatch();
 
   function handleReserve() {
-    axios.post<TicketType>("/ticket/new", { doctor: props._id }).then(() => {
-      setDoctors(dispatch);
-    });
+    axios
+      .post<TicketType>(
+        "https://dashboard-server-ufs1.onrender.com/ticket/new",
+        { doctor: props._id }
+      )
+      .then(() => {
+        setDoctors(dispatch);
+      });
   }
   return (
     <div className="doctor-card">

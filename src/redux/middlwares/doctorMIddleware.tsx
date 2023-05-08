@@ -12,7 +12,10 @@ export function requestDoctorSignup(
 ) {
   return new Promise((resolve, reject) => {
     axios
-      .post<DoctorType>("/api/user/new", form)
+      .post<DoctorType>(
+        "https://dashboard-server-ufs1.onrender.com/api/user/new",
+        form
+      )
       .then((res) => {
         dispatch(setDoctorLoggedIn({ doctorDate: res.data }));
         resolve(res.data);
@@ -26,7 +29,7 @@ export function requestDoctorSignup(
 
 export function checkDoctorToken(dispatch: Dispatch<AnyAction>) {
   axios
-    .get("/controlpanel/check")
+    .get("https://dashboard-server-ufs1.onrender.com/controlpanel/check")
     .then((res) => {
       console.log(res);
       if (res.status === 200) {
@@ -45,7 +48,10 @@ export function requestDoctorLogin(
 ) {
   return new Promise((resolve, reject) => {
     axios
-      .post<DoctorType>("/controlpanel/login", { username, password })
+      .post<DoctorType>(
+        "https://dashboard-server-ufs1.onrender.com/controlpanel/login",
+        { username, password }
+      )
       .then((res) => {
         resolve(res.data);
         if (res.status === 200) {
@@ -65,7 +71,7 @@ export function requestDoctorLogin(
 export function requestDoctorLogout(dispatch: Dispatch<AnyAction>) {
   return new Promise((resolve, reject) => {
     axios
-      .post("/controlpanel/logout")
+      .post("https://dashboard-server-ufs1.onrender.com/controlpanel/logout")
       .then((res) => {
         if (res.status === 200) {
           resolve(res.data);

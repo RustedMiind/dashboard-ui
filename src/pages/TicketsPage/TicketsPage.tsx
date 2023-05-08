@@ -14,7 +14,9 @@ function TicketsPage() {
   useEffect(() => {
     if (!!doctor) {
       axios
-        .get<TicketType[]>("/controlpanel/newtickets")
+        .get<TicketType[]>(
+          "https://dashboard-server-ufs1.onrender.com/controlpanel/newtickets"
+        )
         .then((result) => {
           console.log("tickets", result);
           setTickets(result.data);

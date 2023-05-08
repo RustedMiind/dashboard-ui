@@ -13,7 +13,10 @@ export function requestSignup(
 ) {
   return new Promise((resolve, reject) => {
     axios
-      .post<UserType>("/api/user/new", form)
+      .post<UserType>(
+        "https://dashboard-server-ufs1.onrender.com/api/user/new",
+        form
+      )
       .then((res) => {
         dispatch(setUserLoggedIn({ userData: res.data }));
         resolve(res.data);
@@ -27,7 +30,7 @@ export function requestSignup(
 
 export function checkToken(dispatch: Dispatch<AnyAction>) {
   axios
-    .get("/api/checkuser")
+    .get("https://dashboard-server-ufs1.onrender.com/api/checkuser")
     .then((res) => {
       if (res.status === 200) {
         dispatch(setUserLoggedIn({ userData: res.data }));
@@ -40,7 +43,7 @@ export function checkToken(dispatch: Dispatch<AnyAction>) {
 }
 export function getDoctors(dispatch: Dispatch<AnyAction>) {
   axios
-    .get("/api/doctors")
+    .get("https://dashboard-server-ufs1.onrender.com/api/doctors")
     .then((res) => {
       if (res.status === 200) {
         dispatch(setDoctors({ doctors: res.data }));
@@ -58,7 +61,10 @@ export function requestLogin(
 ) {
   return new Promise((resolve, reject) => {
     axios
-      .post<UserType>("/api/login", { phone, password })
+      .post<UserType>("https://dashboard-server-ufs1.onrender.com/api/login", {
+        phone,
+        password,
+      })
       .then((res) => {
         resolve(res.data);
         if (res.status === 200) {
@@ -78,7 +84,7 @@ export function requestLogin(
 export function requestLogout(dispatch: Dispatch<AnyAction>) {
   return new Promise((resolve, reject) => {
     axios
-      .post("/api/logout")
+      .post("https://dashboard-server-ufs1.onrender.com/api/logout")
       .then((res) => {
         if (res.status === 200) {
           resolve(res.data);

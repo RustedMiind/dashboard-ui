@@ -1,6 +1,6 @@
 {
   "name": "ui",
-  "proxy": "http://localhost:3100/",
+  "proxy": "https://dashboard-server-ufs1.onrender.com/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
