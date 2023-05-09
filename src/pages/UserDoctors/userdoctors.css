@@ -1,5 +1,14 @@
 .doctors-page {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: space-around;
+}
+.doctors-page .tickets-section .ticket {
+  color: rgb(94, 88, 88);
+  padding: 0.4rem 0;
+}
+
+@media (max-width: 968px) {
+  .doctors-page {
+    flex-direction: column;
+  }
 }/*# sourceMappingURL=userdoctors.css.map */

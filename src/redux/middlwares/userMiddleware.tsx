@@ -2,10 +2,12 @@ import axios from "axios";
 import { Dispatch, AnyAction } from "redux";
 import {
   UserType,
+  setActiveTickets,
   setDoctors,
   setUserLoggedIn,
   setUserLoggedOut,
 } from "../reducers/userSlice";
+import { domainApi } from "../../App";
 
 export function requestSignup(
   form: FormObjectType,
@@ -13,10 +15,7 @@ export function requestSignup(
 ) {
   return new Promise((resolve, reject) => {
     axios
-      .post<UserType>(
-        "https://dashboard-server-ufs1.onrender.com/api/user/new",
-        form
-      )
+      .post<UserType>(domainApi("api/user/new"), form)
       .then((res) => {
         dispatch(setUserLoggedIn({ userData: res.data }));
         resolve(res.data);
@@ -30,7 +29,7 @@ export function requestSignup(
 
 export function checkToken(dispatch: Dispatch<AnyAction>) {
   axios
-    .get("https://dashboard-server-ufs1.onrender.com/api/checkuser")
+    .get(domainApi("api/checkuser"))
     .then((res) => {
       if (res.status === 200) {
         dispatch(setUserLoggedIn({ userData: res.data }));
@@ -43,11 +42,27 @@ export function checkToken(dispatch: Dispatch<AnyAction>) {
 }
 export function getDoctors(dispatch: Dispatch<AnyAction>) {
   axios
-    .get("https://dashboard-server-ufs1.onrender.com/api/doctors")
+    .get(domainApi("api/doctors"))
     .then((res) => {
       if (res.status === 200) {
         dispatch(setDoctors({ doctors: res.data }));
       } else {
+      }
+      // getUserActiveTickets(dispatch);
+    })
+    .catch((err) => {
+      // dispatch(setUserLoggedOut());
+      console.log(err);
+    });
+}
+export function getUserActiveTickets(dispatch: Dispatch<AnyAction>) {
+  axios
+    .get(domainApi("api/tickets"))
+    .then((res) => {
+      if (res.status === 200) {
+        dispatch(setActiveTickets({ activeTickets: res.data }));
+      } else {
+        console.log("Error on fetching activve tickets");
       }
     })
     .catch((err) => {
@@ -61,7 +76,7 @@ export function requestLogin(
 ) {
   return new Promise((resolve, reject) => {
     axios
-      .post<UserType>("https://dashboard-server-ufs1.onrender.com/api/login", {
+      .post<UserType>(domainApi("api/login"), {
         phone,
         password,
       })
@@ -84,7 +99,7 @@ export function requestLogin(
 export function requestLogout(dispatch: Dispatch<AnyAction>) {
   return new Promise((resolve, reject) => {
     axios
-      .post("https://dashboard-server-ufs1.onrender.com/api/logout")
+      .post(domainApi("api/logout"))
       .then((res) => {
         if (res.status === 200) {
           resolve(res.data);

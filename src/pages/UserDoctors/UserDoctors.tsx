@@ -1,7 +1,14 @@
 import { useEffect } from "react";
-import { UserStateType, setDoctors } from "../../redux/reducers/userSlice";
+import {
+  ActiveTicketType,
+  UserStateType,
+  setDoctors,
+} from "../../redux/reducers/userSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { getDoctors } from "../../redux/middlwares/userMiddleware";
+import {
+  getDoctors,
+  getUserActiveTickets,
+} from "../../redux/middlwares/userMiddleware";
 import DoctorCard from "../../components/DoctorCard/DoctorCard";
 import "./userdoctors.css";
 import { useNavigate } from "react-router-dom";
@@ -9,11 +16,13 @@ import { useNavigate } from "react-router-dom";
 function UserDoctorsPage() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { doctors, user } = useSelector(
-    (state: { user: UserStateType }) => state.user
+  const { doctors, user, activeTickets } = useSelector(
+    (state: { user: UserStateType; activeTickets: ActiveTicketType }) =>
+      state.user
   );
   useEffect(() => {
     getDoctors(dispatch);
+    getUserActiveTickets(dispatch);
   }, [dispatch]);
   useEffect(() => {
     if (!!user) {
@@ -23,11 +32,25 @@ function UserDoctorsPage() {
   }, [user]);
   return (
     <div className="doctors-page">
-      <h2>Doctors available to book an examination</h2>
-      <div className="doctors-cards">
-        {doctors.map((item) => (
-          <DoctorCard name={item.name} _id={item._id} key={item._id} />
-        ))}
+      <div>
+        <h2>Doctors available to book an examination</h2>
+        <div className="doctors-cards">
+          {doctors.map((item) => (
+            <DoctorCard name={item.name} _id={item._id} key={item._id} />
+          ))}
+        </div>
+      </div>
+      <div className="tickets-section">
+        <h2>Await for Respond Tickets</h2>
+        <h3>Count : {activeTickets.length}</h3>
+        <div className="doctors-cards">
+          {activeTickets.map((item) => (
+            <div className="ticket" key={item._id}>
+              <h4>Doctor :{item.doctor}</h4>
+              <h5>Submited at :{item.createdAt}</h5>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

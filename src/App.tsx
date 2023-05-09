@@ -3,12 +3,18 @@ import "./App.css";
 import { useSelector, useDispatch } from "react-redux";
 import { UserStateType } from "./redux/reducers/userSlice";
 import { checkToken } from "./redux/middlwares/userMiddleware";
-import { Routes, Route, NavLink, useNavigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { DoctorStateType } from "./redux/reducers/doctorSlice";
 import HomePage from "./pages/HomePage/HomePage";
 import DoctorPage from "./pages/DoctorPage/DoctorPage";
 import { checkDoctorToken } from "./redux/middlwares/doctorMIddleware";
 import UserPage from "./pages/UserPage/UserPage";
+import axios from "axios";
+axios.defaults.withCredentials = true;
+
+export function domainApi(path: string): string {
+  return `https://dashboard-server-ufs1.onrender.com/${path}`;
+}
 
 function App() {
   const user = useSelector((state: { user: UserStateType }) => state.user.user);
@@ -16,11 +22,10 @@ function App() {
     (state: { doctor: DoctorStateType }) => state.doctor.doctor
   );
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   React.useEffect(() => {
     checkToken(dispatch);
     checkDoctorToken(dispatch);
-  }, []);
+  }, [dispatch]);
   return (
     <div className="App">
       {/* <Navbar

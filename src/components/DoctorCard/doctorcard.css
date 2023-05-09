@@ -13,7 +13,7 @@
   align-items: center;
   justify-content: space-between;
   height: 10rem;
-  width: 50rem;
+  width: 40rem;
   margin: 1rem;
   color: var(--font-color);
   border-radius: 1rem;
@@ -59,12 +59,15 @@
 }
 
 @media (max-width: 968px) {
-  .ticket-card {
+  .doctor-card {
     max-width: 90%;
     align-items: start;
     flex-direction: column;
   }
-  .ticket-card .manage {
+  .doctor-card .content {
+    max-width: 100%;
+  }
+  .doctor-card .manage {
     display: flex;
     align-items: center;
     justify-content: center;

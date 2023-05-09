@@ -3,11 +3,13 @@ import { createSlice } from "@reduxjs/toolkit";
 export interface UserStateType {
   user: null | UserType;
   doctors: { name: string; _id: string }[];
+  activeTickets: ActiveTicketType[];
 }
 
 const initialState: UserStateType = {
   user: null,
   doctors: [],
+  activeTickets: [],
 };
 
 export const menuSlice = createSlice({
@@ -28,6 +30,9 @@ export const menuSlice = createSlice({
     setDoctors: (state, { payload }) => {
       state.doctors = payload.doctors;
     },
+    setActiveTickets: (state, { payload }) => {
+      state.activeTickets = payload.activeTickets;
+    },
   },
 });
 
@@ -38,6 +43,18 @@ export type UserType = {
   phone: string;
 };
 
-export const { setUserLoggedIn, setUserLoggedOut, setDoctors } =
-  menuSlice.actions;
+export type ActiveTicketType = {
+  _id: string;
+  doctor: string;
+  patient: string;
+  approved: boolean;
+  createdAt: string;
+};
+
+export const {
+  setUserLoggedIn,
+  setUserLoggedOut,
+  setDoctors,
+  setActiveTickets,
+} = menuSlice.actions;
 export default menuSlice.reducer;

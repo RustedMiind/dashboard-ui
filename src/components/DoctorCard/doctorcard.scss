@@ -5,7 +5,7 @@
   align-items: center;
   justify-content: space-between;
   height: 10rem;
-  width: 50rem;
+  width: 40rem;
   margin: 1rem;
   color: $fontColor;
   border-radius: 1rem;
@@ -51,10 +51,13 @@
 }
 
 @media (max-width: 968px) {
-  .ticket-card {
+  .doctor-card {
     max-width: 90%;
     align-items: start;
     flex-direction: column;
+    .content {
+      max-width: 100%;
+    }
     .manage {
       display: flex;
       align-items: center;

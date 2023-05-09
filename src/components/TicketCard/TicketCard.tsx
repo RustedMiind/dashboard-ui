@@ -1,14 +1,13 @@
 import axios from "axios";
 import "./ticketcard.css";
 import { TicketType } from "../../pages/TicketsPage/TicketsPage";
+import { domainApi } from "../../App";
 
 function TicketCard(props: PropsType) {
   function handleApprovement() {
     console.log(props);
     axios
-      .get<TicketType[]>(
-        `https://dashboard-server-ufs1.onrender.com/controlpanel/approveticket/${props._id}`
-      )
+      .get<TicketType[]>(domainApi(`controlpanel/approveticket/${props._id}`))
       .then((res) => {
         console.log("Approved", res);
         props.setTickets(res.data);
@@ -19,9 +18,7 @@ function TicketCard(props: PropsType) {
   function handleDeletion() {
     console.log(props);
     axios
-      .get<TicketType[]>(
-        `https://dashboard-server-ufs1.onrender.com/controlpanel/deleteticket/${props._id}`
-      )
+      .get<TicketType[]>(domainApi(`controlpanel/deleteticket/${props._id}`))
       .then((res) => {
         console.log("Deleted", res);
         props.setTickets(res.data);
